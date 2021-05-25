@@ -3,22 +3,22 @@
     android:layout_height="match_parent" android:layout_width="wrap_content">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/account"
-            android:icon="@drawable/ic_launcher_foreground"
+            android:id="@+id/healthIn"
+            android:icon="@drawable/heart"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:title="건강정보 입력"
             />
         <item
-            android:id="@+id/setting"
-            android:icon="@drawable/ic_launcher_foreground"
+            android:id="@+id/foodSetting"
+            android:icon="@drawable/weight_reduction"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
             android:title="식단 음식 입력"
             />
         <item
-            android:id="@+id/logout"
-            android:icon="@drawable/ic_launcher_foreground"
+            android:id="@+id/hotTopic"
+            android:icon="@drawable/hot_topic"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:title="식단 추가"
+            android:title="새로운 이야기"
             />
     </group>
 </menu>

@@ -22,7 +22,6 @@ public class EatingFood extends AppCompatActivity {
             setSupportActionBar(toolbar);
             ActionBar actionBar = getSupportActionBar();
             actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
-            actionBar.setHomeAsUpIndicator(R.drawable.back_button);
 
         }
 

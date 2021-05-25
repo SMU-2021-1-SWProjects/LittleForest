@@ -36,6 +36,8 @@
                 android:text="찰떡궁합"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp" />
+
+
         </androidx.appcompat.widget.Toolbar>
 
     </RelativeLayout>

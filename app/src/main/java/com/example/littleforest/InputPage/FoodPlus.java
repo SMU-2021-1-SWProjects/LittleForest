@@ -10,7 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.littleforest.R;
 
 
-//식단 추가
+//식단 추가 -> 핫 토픽으로 변경
 public class FoodPlus extends AppCompatActivity {
 
         protected void onCreate(Bundle saveInstanceState)
@@ -23,7 +23,6 @@ public class FoodPlus extends AppCompatActivity {
             setSupportActionBar(toolbar);
             ActionBar actionBar = getSupportActionBar();
             actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
-            actionBar.setHomeAsUpIndicator(R.drawable.back_button);
 
         }
 
