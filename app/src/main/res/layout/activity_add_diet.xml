@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context=".InputPage.AddDietActivity">
+
+    <!--toolbar 삽입-->
+    <include layout="@layout/toolbar"/>
+
+
+    <!--커스텀 액션바 : 뒤로가기, 날짜-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <ImageButton
+            android:id="@+id/page_calendar"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/ic_baseline_arrow_back_ios_24">
+        </ImageButton>
+
+        <TextView
+            android:id="@+id/tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+
+            android:text=""
+            android:textSize="30dp"
+            android:gravity="center"
+            android:layout_marginBottom="10dp">
+        </TextView>
+
+    </RelativeLayout>
+
+    <!--아침, 점심, 저녁 식단-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/breakfast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+
+            android:text="아침"
+            android:textSize="30dp"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/lunch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+
+            android:text="점심"
+            android:textSize="30dp"
+            android:gravity="center">
+        </TextView>
+
+        <TextView
+            android:id="@+id/dinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="30dp"
+
+            android:text="저녁"
+            android:textSize="30dp"
+            android:gravity="center">
+        </TextView>
+
+    </LinearLayout>
+
+</LinearLayout>
