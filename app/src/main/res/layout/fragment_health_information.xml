@@ -12,18 +12,18 @@
         tools:layout_editor_absoluteX="-27dp"
         tools:layout_editor_absoluteY="44dp" />
 
-    <include
-        android:id="@+id/health_input_page"
-        layout="@layout/fragment_health_information_input"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
 
-        android:layout_marginTop="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/include"
-        app:layout_constraintStart_toStartOf="@+id/include"
-        app:layout_constraintTop_toTopOf="@+id/include"
-        app:layout_constraintVertical_bias="0.0" />
+        <include
+            android:id="@+id/health_input_page"
+            layout="@layout/fragment_health_information_input"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
+            android:layout_marginTop="100dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/include"
+            app:layout_constraintStart_toStartOf="@+id/include"
+            app:layout_constraintTop_toTopOf="@+id/include"
+             app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,7 +18,7 @@
         android:id="@+id/userbutton"
         android:layout_width="46dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/user_button"
+        android:background="@drawable/user"
         android:contentDescription="@string/nav_header_desc"
         android:outlineSpotShadowColor="#FFFFFF"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
@@ -30,13 +30,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        android:text="사용자 이름"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
+        android:text="Tom"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textColor="#3C3131" />
 
     <TextView
         android:id="@+id/user_grade"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="건강지키미" />
+        android:text="건강지키미"
+        android:textColor="#FFFFFF" />
 
 </LinearLayout>

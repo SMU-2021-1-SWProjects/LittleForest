@@ -25,13 +25,14 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="55dp"
-            android:background="#9C1ABC7B"
+            android:background="@color/base"
             app:contentInsetStart="0dp">
 
             <TextView
                 android:id="@+id/txv_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/bmeuljiro10yearslater"
                 android:gravity="center"
                 android:text="찰떡궁합"
                 android:textColor="#FFFFFF"

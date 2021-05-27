@@ -11,9 +11,11 @@
     <!--toolbar 삽입-->
     <include layout="@layout/toolbar"/>
 
-
-    <!--이미지 드로어 삽입 대체 이미지 드로어를 빼면 왜 오류?-->
+    <!--이미지 드로어 삽입-->
     <include layout="@layout/image_drawer"/>
+
+
+
 
     <!-- 네비 삽입 (네비게이션 바는 가장 하단의 놓아야 에러가 발생x)-->
     <com.google.android.material.navigation.NavigationView
@@ -26,8 +28,6 @@
         app:menu="@menu/navi_menu" />
 
         <!--스크롤 필요시 삽입 -->
-
-
 
 
 
