@@ -152,7 +152,13 @@ import static android.R.id.home;
                  }
             
             case R.id.action_search: {
-                Toast.makeText(getApplicationContext(), "검색 버튼 클릭됨", Toast.LENGTH_LONG).show();
+
+                //Toast.makeText(getApplicationContext(), "검색 버튼 클릭됨", Toast.LENGTH_LONG).show();
+
+                Intent eatingFood_intent = new Intent(MainActivity.this, FoodSearchActivity.class);
+                startActivity(eatingFood_intent);
+
+
                 return super.onOptionsItemSelected(item);
             }
 

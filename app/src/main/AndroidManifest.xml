@@ -26,10 +26,14 @@
         <!--모든 activity는 AndroidManifest에서 정의-->
         <activity android:name=".MainActivity"/>
         <activity android:name=".InputPage.FoodPlus"/>
-        <activity android:name=".InputPage.EatingFood"/>
         <activity android:name=".InputPage.HealthInformation"/>
+
+        <activity android:name=".InputPage.EatingFood"/>
         <activity android:name=".InputPage.AddMenuActivity"/>
         <activity android:name=".InputPage.AddDietActivity"/>
+
+        <activity android:name=".FoodSearchActivity"/>
+
 
 
 
