@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    >
+
+    <TextView
+
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+
+        android:paddingLeft="10dp"
+        android:text="이름" />
+
+    <EditText
+        android:id="@+id/edit_name"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="키" />
+
+    <EditText
+        android:id="@+id/edit_stature"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="몸무게" />
+
+    <EditText
+        android:id="@+id/edit_weight"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content" />
+
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="혈압" />
+
+    <Spinner
+        android:id="@+id/blood_spinner"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:dropDownWidth = "200dp"
+        android:spinnerMode="dropdown"
+        />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:text="질병" />
+
+    <Spinner
+        android:id="@+id/disease_spinner"
+        android:layout_width="123dp"
+        android:layout_height="wrap_content"
+        android:dropDownWidth = "200dp"
+        android:spinnerMode="dropdown"
+        />
+
+
+    <Button
+        android:layout_marginTop="10dp"
+        android:id="@+id/healty_modify"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="modify"
+        tools:visibility="visible" />
+
+
+</LinearLayout>
