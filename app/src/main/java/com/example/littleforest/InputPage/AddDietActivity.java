@@ -19,7 +19,7 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
 
     private static final String TAG = "AddDietActivity";
 
-    private ImageButton page_calendar;
+    //private ImageButton page_calendar;
     private TextView tv_date;
     private String date;
 
@@ -32,15 +32,13 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_diet);
 
+        //---------- toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
 
-
-
         //---------- findViewById
-        page_calendar = (ImageButton) findViewById(R.id.page_calendar);
         tv_date = (TextView) findViewById(R.id.tv_date);
 
         add_breakfast = (TextView) findViewById(R.id.breakfast);
@@ -48,7 +46,6 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
         add_dinner = (TextView) findViewById(R.id.dinner);
 
         //--------- 버튼~리스너 연결
-        page_calendar.setOnClickListener(this);
         add_breakfast.setOnClickListener(this);
         add_lunch.setOnClickListener(this);
         add_dinner.setOnClickListener(this);
@@ -64,30 +61,23 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
 
     @Override
     public void onClick(View view){
-        if (view.getId() == R.id.page_calendar){
-            // 페이지 전환 : 뒤로가기
-            finish();
-        }else{
-            // 페이지 전환 : 아침/점심/저녁을 클릭 -> 식단 입력
-            Intent intent_addMenu = new Intent(AddDietActivity.this, AddMenuActivity.class);
-            String time = "";
+        Intent intent_addMenu = new Intent(AddDietActivity.this, AddMenuActivity.class);
+        String time = "";
 
-            switch (view.getId()){
-                case R.id.breakfast :
-                    time = "아침";
-                    break;
-                case R.id.lunch :
-                    time = "점심";
-                    break;
-                case R.id.dinner :
-                    time = "저녁";
-                    break;
-            }
-
-            intent_addMenu.putExtra("date", date);
-            intent_addMenu.putExtra("time", time);
-            startActivity(intent_addMenu);
+        switch (view.getId()){
+            case R.id.breakfast :
+                time = "아침";
+                break;
+            case R.id.lunch :
+                time = "점심";
+                break;
+            case R.id.dinner :
+                time = "저녁";
         }
+
+        intent_addMenu.putExtra("date", date);
+        intent_addMenu.putExtra("time", time);
+        startActivity(intent_addMenu);
     }
 
     public void seeDiet(){

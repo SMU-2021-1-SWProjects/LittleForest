@@ -46,7 +46,6 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
 
     //----------
 
-    private ImageButton page_addDiet;
     private TextView tv_date;
     private ImageButton btn_save;
 
@@ -63,6 +62,7 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_menu);
 
+        //---------- toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
@@ -70,7 +70,6 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
 
 
         //---------- findViewById
-        page_addDiet = (ImageButton) findViewById(R.id.page_addDiet);
         tv_date = (TextView) findViewById(R.id.tv_date);
         btn_save = (ImageButton) findViewById(R.id.btn_save);
 
@@ -81,12 +80,10 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
         btn_addMenu = (Button) findViewById(R.id.btn_addMenu);
 
         //---------- 버튼~리스너 연결
-        page_addDiet.setOnClickListener(this);
         btn_save.setOnClickListener(this);
         btn_addMenu.setOnClickListener(this);
 
-        //---------- 날짜 + 식단
-        //---------- 아침/점심/저녁 구분
+        //---------- 날짜 + 식단 & 아침/점심/저녁 구분
         Intent gettedIntent = getIntent();
         date = gettedIntent.getStringExtra("date");
         time = gettedIntent.getStringExtra("time");
@@ -124,13 +121,6 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     public void onClick(View view){
         switch (view.getId()){
-            // 페이지 전환 : 뒤로가기
-            // 리스트뷰 -> 데이터베이스에 저장
-            case R.id.page_addDiet :
-                //saveDiet();
-                finish();
-                break;
-
             // save 버튼 : 리스트뷰 -> 데이터베이스에 저장
             case R.id.btn_save :
                 saveDiet();
@@ -187,8 +177,10 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
                     // 입력란이 공백이 아닐 시, 메뉴 추가
                     diet_data.add(menu);
                     listView_adapter.notifyDataSetChanged();
-                    dialog.cancel();
+                }else{
+                    Toast.makeText(AddMenuActivity.this, "메뉴를 입력해주세요", Toast.LENGTH_SHORT).show();
                 }
+                dialog.cancel();
             }
         });
 

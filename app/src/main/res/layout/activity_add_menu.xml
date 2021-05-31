@@ -17,13 +17,13 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
-        <ImageButton
+        <!--<ImageButton
             android:id="@+id/page_addDiet"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_alignParentLeft="true"
             android:background="@drawable/ic_baseline_arrow_back_ios_24">
-        </ImageButton>
+        </ImageButton>-->
 
         <TextView
             android:id="@+id/tv_date"

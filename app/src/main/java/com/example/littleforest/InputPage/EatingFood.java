@@ -19,46 +19,37 @@ import com.google.firebase.database.FirebaseDatabase;
 //식단 음식 입력
 public class EatingFood extends AppCompatActivity {
 
-
     public static DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("Diet");
 
-    //private static final String TAG = "MainActivity";
+    private static final String TAG = "MainActivity";
 
     private CalendarView calendarView;
 
+    protected void onCreate(Bundle saveInstanceState){
+        super.onCreate(saveInstanceState);
+        setContentView(R.layout.activity_eatingfood);
 
+        //---------- toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
 
+        //---------- findViewById
+        calendarView = (CalendarView) findViewById(R.id.calendar);
 
-    protected void onCreate(Bundle saveInstanceState)
-        {
-            super.onCreate(saveInstanceState);
-            setContentView(R.layout.activity_eatingfood);
+        //---------- 페이지 전환 : 어떤 날을 클릭 -> 그 날의 식단 페이지
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                String date = year + "/" + (month + 1) + "/" + dayOfMonth;
 
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            ActionBar actionBar = getSupportActionBar();
-            actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
-
-
-
-            //JEC
-            //---------- findViewById
-            calendarView = (CalendarView) findViewById(R.id.calendar);
-
-            //---------- 페이지 전환 : 어떤 날을 클릭 -> 그 날의 식단 페이지
-            calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                @Override
-                public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                    String date = year + "/" + (month + 1) + "/" + dayOfMonth;
-
-                    Intent intent_addDiet = new Intent(EatingFood.this, AddDietActivity.class);
-                    intent_addDiet.putExtra("date", date);
-                    startActivity(intent_addDiet);
-                }
-            });
-        }
-
-
+                Intent intent_addDiet = new Intent(EatingFood.this, AddDietActivity.class);
+                intent_addDiet.putExtra("date", date);
+                startActivity(intent_addDiet);
+            }
+        });
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -70,7 +61,4 @@ public class EatingFood extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 }
