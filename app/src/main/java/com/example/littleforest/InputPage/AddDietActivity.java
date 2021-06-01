@@ -40,7 +40,8 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Diet> data_diet;
 
-    // 날짜 & 시간
+    // 페이지 & 날짜 & 시간
+    private TextView txv_toolbar;
     private String date;
     private TextView tv_date;
 
@@ -52,13 +53,20 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_diet);
+        setContentView(R.layout.add_diet);
 
         //---------- toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+
+        //---------- 페이지 이름 & 날짜/시간
+        Intent dateIntent = getIntent();
+        date = dateIntent.getStringExtra("date");
+
+        txv_toolbar = (TextView) findViewById(R.id.txv_toolbar);
+        txv_toolbar.setText(date + " 식단");
 
         //---------- findViewById
         //데이터베이스
@@ -72,9 +80,6 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
 
         data_diet = new ArrayList<>();
 
-        // 날짜
-        tv_date = (TextView) findViewById(R.id.tv_date);
-
         // 식단 추가
         tv_breakfast = (TextView) findViewById(R.id.tv_breakfast);
         tv_lunch = (TextView) findViewById(R.id.tv_lunch);
@@ -84,11 +89,6 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
         tv_breakfast.setOnClickListener(this);
         tv_lunch.setOnClickListener(this);
         tv_dinner.setOnClickListener(this);
-
-        //---------- 날짜 + 식단
-        Intent dateIntent = getIntent();
-        date = dateIntent.getStringExtra("date");
-        tv_date.setText(date + " 식단");
 
         //---------- 식단 보기
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {

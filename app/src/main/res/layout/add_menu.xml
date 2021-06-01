@@ -6,7 +6,6 @@
     android:orientation="vertical"
     tools:context="InputPage.AddMenuActivity">
 
-
     <!--toolbar 삽입-->
     <include layout="@layout/toolbar"/>
 
@@ -16,41 +15,30 @@
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
 
+        <!--아침/점심/저녁 구분-->
         <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/edge"
+            android:padding="10dp"
 
-            android:text="날짜"
-            android:textSize="30dp"
-            android:gravity="center"
-            android:layout_marginBottom="10dp">
+            android:text="아침/점심/저녁"
+            android:textSize="20dp"
+            android:gravity="center">
         </TextView>
 
         <ImageButton
             android:id="@+id/btn_save"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_margin="12dp"
             android:layout_alignParentRight="true"
             android:background="@drawable/ic_baseline_save_24">
         </ImageButton>
 
     </RelativeLayout>
-
-    <!--아침/점심/저녁 구분-->
-    <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/edge"
-        android:padding="10dp"
-
-        android:text="아침/점심/저녁"
-        android:textSize="30dp"
-        android:gravity="center">
-    </TextView>
 
     <!--리스트뷰 : 메뉴 부분-->
     <LinearLayout

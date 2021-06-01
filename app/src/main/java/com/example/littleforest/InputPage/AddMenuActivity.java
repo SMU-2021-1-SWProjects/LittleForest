@@ -51,15 +51,16 @@ public class AddMenuActivity extends AppCompatActivity{
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<Diet> data_menu;
 
-    // 날짜, 시간
+    // 페이지, 날짜, 시간
     private String date;
     private String time;
 
+    private TextView txv_toolbar;
     private TextView tv_date;
     private TextView tv_time;
 
     // 버튼 : 메뉴 추가
-    //private ImageButton btn_save;
+    private ImageButton btn_save;
     private Button btn_addMenu;
 
     /*private ArrayList<String> diet_data;
@@ -69,13 +70,23 @@ public class AddMenuActivity extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_menu);
+        setContentView(R.layout.add_menu);
 
         //---------- toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+
+        //---------- 페이지 이름 & 날짜/시간
+        Intent gettedIntent = getIntent();
+        date = gettedIntent.getStringExtra("date");
+        time = gettedIntent.getStringExtra("time");
+
+        txv_toolbar = (TextView) findViewById(R.id.txv_toolbar);
+        tv_time = (TextView) findViewById(R.id.tv_time);
+        txv_toolbar.setText(date + " 식단");
+        tv_time.setText(time);
 
         //---------- findViewById
         // 데이터베이스
@@ -89,12 +100,8 @@ public class AddMenuActivity extends AppCompatActivity{
 
         data_menu = new ArrayList<>();
 
-        // 날짜 & 시간
-        tv_date = (TextView) findViewById(R.id.tv_date);
-        tv_time = (TextView) findViewById(R.id.tv_time);
-
         // 버튼
-        //btn_save = (ImageButton) findViewById(R.id.btn_save);
+        btn_save = (ImageButton) findViewById(R.id.btn_save);
         btn_addMenu = (Button) findViewById(R.id.btn_addMenu);
 
         //lv_menu = (ListView) findViewById(R.id.lv_menu);
@@ -102,14 +109,6 @@ public class AddMenuActivity extends AppCompatActivity{
         //---------- 버튼~리스너 연결
         //btn_save.setOnClickListener(this);
         //btn_addMenu.setOnClickListener(this);
-
-        //---------- 날짜 + 식단 & 시간
-        Intent gettedIntent = getIntent();
-        date = gettedIntent.getStringExtra("date");
-        time = gettedIntent.getStringExtra("time");
-
-        tv_date.setText(date + " 식단");
-        tv_time.setText(time);
 
         //---------- 식단 리스트뷰
         /*diet_data = new ArrayList<String>();

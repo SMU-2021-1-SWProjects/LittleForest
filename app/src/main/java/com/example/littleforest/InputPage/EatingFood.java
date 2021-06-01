@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.CalendarView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -19,21 +20,25 @@ import com.google.firebase.database.FirebaseDatabase;
 //식단 음식 입력
 public class EatingFood extends AppCompatActivity {
 
-    public static DatabaseReference myDatabase = FirebaseDatabase.getInstance().getReference("Diet");
-
     private static final String TAG = "MainActivity";
 
+    // 페이지
+    private TextView txv_toolbar;
     private CalendarView calendarView;
 
     protected void onCreate(Bundle saveInstanceState){
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_eatingfood);
+        setContentView(R.layout.eating_food);
 
         //---------- toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+
+        //---------- 페이지 이름
+        txv_toolbar = (TextView) findViewById(R.id.txv_toolbar);
+        txv_toolbar.setText("식단 입력");
 
         //---------- findViewById
         calendarView = (CalendarView) findViewById(R.id.calendar);

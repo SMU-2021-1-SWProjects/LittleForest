@@ -12,7 +12,7 @@
             android:id="@+id/foodSetting"
             android:icon="@drawable/weight_reduction"
             style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
-            android:title="식단 음식 입력"
+            android:title="식단 입력"
             />
         <item
             android:id="@+id/hotTopic"
