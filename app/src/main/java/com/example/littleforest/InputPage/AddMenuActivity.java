@@ -20,6 +20,8 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.littleforest.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -35,27 +37,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-//import static com.example.littleforest.MainActivity.myDatabase;
-
-public class AddMenuActivity extends AppCompatActivity implements View.OnClickListener{
+public class AddMenuActivity extends AppCompatActivity{
+    // implements View.OnClickListener
 
     private static final String TAG = "AddMenuActivity";
 
+    // 데이터베이스
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
+
+    private RecyclerView rv_menu;
+    private RecyclerView.Adapter adapter_menu;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<Diet> data_menu;
+
+    // 날짜, 시간
     private String date;
     private String time;
 
-    //----------
-
     private TextView tv_date;
-    private ImageButton btn_save;
-
     private TextView tv_time;
 
-    private ArrayList<String> diet_data;
-    private ArrayAdapter<String> listView_adapter;
-    private ListView lv_menu;
-
+    // 버튼 : 메뉴 추가
+    //private ImageButton btn_save;
     private Button btn_addMenu;
+
+    /*private ArrayList<String> diet_data;
+    private ArrayAdapter<String> listView_adapter;
+    private ListView lv_menu;*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,22 +77,33 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
 
-
         //---------- findViewById
-        tv_date = (TextView) findViewById(R.id.tv_date);
-        btn_save = (ImageButton) findViewById(R.id.btn_save);
+        // 데이터베이스
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Diet");
 
+        rv_menu = findViewById(R.id.rv_menu);
+        rv_menu.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        rv_menu.setLayoutManager(layoutManager);
+
+        data_menu = new ArrayList<>();
+
+        // 날짜 & 시간
+        tv_date = (TextView) findViewById(R.id.tv_date);
         tv_time = (TextView) findViewById(R.id.tv_time);
 
-        lv_menu = (ListView) findViewById(R.id.lv_menu);
-
+        // 버튼
+        //btn_save = (ImageButton) findViewById(R.id.btn_save);
         btn_addMenu = (Button) findViewById(R.id.btn_addMenu);
 
-        //---------- 버튼~리스너 연결
-        btn_save.setOnClickListener(this);
-        btn_addMenu.setOnClickListener(this);
+        //lv_menu = (ListView) findViewById(R.id.lv_menu);
 
-        //---------- 날짜 + 식단 & 아침/점심/저녁 구분
+        //---------- 버튼~리스너 연결
+        //btn_save.setOnClickListener(this);
+        //btn_addMenu.setOnClickListener(this);
+
+        //---------- 날짜 + 식단 & 시간
         Intent gettedIntent = getIntent();
         date = gettedIntent.getStringExtra("date");
         time = gettedIntent.getStringExtra("time");
@@ -92,7 +112,7 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
         tv_time.setText(time);
 
         //---------- 식단 리스트뷰
-        diet_data = new ArrayList<String>();
+        /*diet_data = new ArrayList<String>();
         listView_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_expandable_list_item_1, diet_data);
 
         lv_menu.setAdapter(listView_adapter);
@@ -112,13 +132,35 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
                 lv_longClick(position);
                 return true;
             }
-        });
+        });*/
 
         //----------- 메뉴 보기
-        //seeMenu();
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                data_menu.clear();
+
+                for(DataSnapshot s : snapshot.getChildren()){
+                    Diet diet = s.getValue(Diet.class);
+
+                    if((diet.getDate().equals(date)) && (diet.getTime().equals(time))){
+                        data_menu.add(diet);
+                    }
+                }
+                adapter_menu.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddMenuActivity.this, "Database Error", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        adapter_menu = new MenuAdapter(data_menu, this);
+        rv_menu.setAdapter(adapter_menu);
     }
 
-    @Override
+    /*@Override
     public void onClick(View view){
         switch (view.getId()){
             // save 버튼 : 리스트뷰 -> 데이터베이스에 저장
@@ -131,16 +173,16 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
                 addMenu();
                 break;
         }
-    }
+    }*/
 
     /**
      * 데이터베이스에 데이터를 저장하는 함수
      */
-    public void saveDiet(){
+    /*public void saveDiet(){
         if(diet_data.size() != 0){
             Diet diet = new Diet(date, time, diet_data);
 
-            /*myDatabase.push().setValue(diet)
+            databaseReference.push().setValue(diet)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
@@ -150,16 +192,16 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(AddMenuActivity.this, "저장을 실패했습니다", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddMenuActivity.this, "저장에 실패했습니다", Toast.LENGTH_SHORT).show();
                         }
-                    });*/
+                    });
         }
-    }
+    }*/
 
     /**
      * 리스트뷰에 메뉴를 추가하는 함수
      */
-    public void addMenu(){
+    /*public void addMenu(){
         //다이어로그 불러오기
         EditText editText = new EditText(AddMenuActivity.this);
 
@@ -194,13 +236,13 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
 
         //다이어로그 실행
         builder.show();
-    }
+    }*/
 
     /**
      * 리스트뷰 내 아이템 수정하는 함수
      * @param position
      */
-    public void lv_shortClick(int position){
+    /*public void lv_shortClick(int position){
         // 다이어로그 불러오기
         EditText editText = new EditText(AddMenuActivity.this);
         String beforeMenu = diet_data.get(position);
@@ -230,13 +272,13 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
 
         // 다이어로그 실행
         builder.show();
-    }
+    }*/
 
     /**
      * 리스트뷰 내 아이템 삭제하는 함수
-     * @param position
+     * @param //position
      */
-    public void lv_longClick(int position){
+    /*public void lv_longClick(int position){
         // 다이어로그 불러오기
         AlertDialog.Builder builder = new AlertDialog.Builder(AddMenuActivity.this);
         builder.setMessage("이 메뉴를 삭제하시겠습니까?");
@@ -260,7 +302,7 @@ public class AddMenuActivity extends AppCompatActivity implements View.OnClickLi
 
         // 다이어로그 실행
         builder.show();
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

@@ -9,77 +9,81 @@
     <!--toolbar 삽입-->
     <include layout="@layout/toolbar"/>
 
-
-    <!--커스텀 액션바 : 뒤로가기, 날짜-->
-    <RelativeLayout
+    <!--제목-->
+    <TextView
+        android:id="@+id/tv_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
 
-        <!--<ImageButton
-            android:id="@+id/page_calendar"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/ic_baseline_arrow_back_ios_24">
-        </ImageButton>-->
-
-        <TextView
-            android:id="@+id/tv_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-
-            android:text=""
-            android:textSize="30dp"
-            android:gravity="center"
-            android:layout_marginBottom="10dp">
-        </TextView>
-
-    </RelativeLayout>
+        android:text="날짜"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
+    </TextView>
 
     <!--아침, 점심, 저녁 식단-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical"
+        android:layout_margin="10dp">
 
-        android:layout_marginTop="50dp">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_diet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
 
+    </LinearLayout>
+
+    <!--식단 추가 버튼-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
+
+        <!--아침 식단 추가-->
         <TextView
-            android:id="@+id/breakfast"
+            android:id="@+id/tv_breakfast"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="30dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:background="#d3d3d3"
 
             android:text="아침"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:gravity="center">
         </TextView>
 
+        <!--점심 식단 추가-->
         <TextView
-            android:id="@+id/lunch"
+            android:id="@+id/tv_lunch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="30dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:background="#d3d3d3"
 
             android:text="점심"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:gravity="center">
         </TextView>
 
+        <!--저녁 식단 추가-->
         <TextView
-            android:id="@+id/dinner"
+            android:id="@+id/tv_dinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="30dp"
+            android:padding="5dp"
+            android:layout_weight="1"
+            android:background="#d3d3d3"
 
             android:text="저녁"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:gravity="center">
         </TextView>
 

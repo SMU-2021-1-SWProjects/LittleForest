@@ -11,32 +11,17 @@
     <!--toolbar 삽입-->
     <include layout="@layout/toolbar"/>
 
-    <!--커스텀 액션바 : 뒤로가기, 날짜-->
-    <RelativeLayout
+    <!--제목-->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical">
+        android:layout_gravity="center"
 
-        <!--<ImageButton
-            android:id="@+id/page_home"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/ic_baseline_arrow_back_ios_24">
-        </ImageButton>-->
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-
-            android:text="식단 추가"
-            android:textSize="30dp"
-            android:gravity="center"
-            android:layout_marginBottom="10dp">
-        </TextView>
-
-    </RelativeLayout>
+        android:text="식단 추가"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginBottom="10dp">
+    </TextView>
 
     <!--달력 부분-->
     <LinearLayout

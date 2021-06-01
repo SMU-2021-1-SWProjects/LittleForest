@@ -10,20 +10,11 @@
     <!--toolbar 삽입-->
     <include layout="@layout/toolbar"/>
 
-
-    <!--커스텀 액션바 : 뒤로가기, 날짜-->
+    <!--제목, 저장버튼-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical">
-
-        <!--<ImageButton
-            android:id="@+id/page_addDiet"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentLeft="true"
-            android:background="@drawable/ic_baseline_arrow_back_ios_24">
-        </ImageButton>-->
 
         <TextView
             android:id="@+id/tv_date"
@@ -31,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
 
-            android:text=""
+            android:text="날짜"
             android:textSize="30dp"
             android:gravity="center"
             android:layout_marginBottom="10dp">
@@ -54,8 +45,9 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/edge"
+        android:padding="10dp"
 
-        android:text=""
+        android:text="아침/점심/저녁"
         android:textSize="30dp"
         android:gravity="center">
     </TextView>
@@ -67,11 +59,11 @@
         android:layout_weight="1"
         android:layout_margin="10dp">
 
-        <ListView
-            android:id="@+id/lv_menu"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_menu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-        </ListView>
+        </androidx.recyclerview.widget.RecyclerView>
 
     </LinearLayout>
 

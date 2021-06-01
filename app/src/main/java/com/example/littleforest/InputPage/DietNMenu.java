@@ -5,7 +5,7 @@ import com.google.firebase.database.IgnoreExtraProperties;
 import java.util.ArrayList;
 
 @IgnoreExtraProperties
-public class Diet {
+class Diet {
     public String date;
     public String time;
     public ArrayList<String> menu;
@@ -21,9 +21,9 @@ public class Diet {
     }
 
     //---------- set 함수수
-   public void setDate(String date) {
-       this.date = date;
-   }
+    public void setDate(String date){
+        this.date = date;
+    }
 
     public void setTime(String time){
         this.time = time;
