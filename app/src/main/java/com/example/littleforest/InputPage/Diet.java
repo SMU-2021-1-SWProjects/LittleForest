@@ -1,11 +1,8 @@
 package com.example.littleforest.InputPage;
 
-import com.google.firebase.database.IgnoreExtraProperties;
-
 import java.util.ArrayList;
 
-@IgnoreExtraProperties
-class Diet {
+public class Diet {
     public String date;
     public String time;
     public ArrayList<String> menu;
@@ -20,15 +17,13 @@ class Diet {
         this.menu = menu;
     }
 
-    //---------- set 함수수
+    //---------- set 함수
     public void setDate(String date){
         this.date = date;
     }
-
     public void setTime(String time){
         this.time = time;
     }
-
     public void setMenu(ArrayList<String> menu){
         this.menu = menu;
     }
@@ -37,12 +32,25 @@ class Diet {
     public String getDate(){
         return date;
     }
-
     public String getTime(){
         return time;
     }
-
     public ArrayList<String> getMenu(){
         return menu;
+    }
+
+    //---------- toString 함수
+    public String toString(){
+        String string_menu = "";
+
+        for(int i = 0 ; i < this.menu.size() ; i++){
+            if(i == 0){
+                string_menu += this.menu.get(i);
+            }else{
+                string_menu += "\n" + this.menu.get(i);
+            }
+        }
+
+        return string_menu;
     }
 }

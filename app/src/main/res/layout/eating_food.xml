@@ -10,10 +10,22 @@
     <!--toolbar 삽입-->
     <include layout="@layout/toolbar"/>
 
+    <!--안내 사항-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:text="※ 식단을 입력할 날짜를 클릭해주세요"
+        android:textSize="15dp"
+        android:gravity="center">
+    </TextView>
+
     <!--달력-->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginBottom="50dp">
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -1,5 +1,6 @@
 package com.example.littleforest.InputPage;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,6 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.littleforest.R;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,6 +32,8 @@ import java.util.ArrayList;
 public class AddDietActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String TAG = "AddDietActivity";
+
+    public static Context addDietContext;
 
     // 데이터베이스
     private FirebaseDatabase database;
@@ -43,7 +47,7 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
     // 페이지 & 날짜 & 시간
     private TextView txv_toolbar;
     private String date;
-    private TextView tv_date;
+    //private TextView tv_date;
 
     // 식단 추가
     private TextView tv_breakfast;
@@ -54,6 +58,8 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_diet);
+
+        addDietContext = this;
 
         //---------- toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -71,7 +77,7 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
         //---------- findViewById
         //데이터베이스
         database = FirebaseDatabase.getInstance();
-        databaseReference = database.getReference("Diet");
+        databaseReference = database.getReference();
 
         rv_diet = findViewById(R.id.rv_diet);
         rv_diet.setHasFixedSize(true);
@@ -91,7 +97,14 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
         tv_dinner.setOnClickListener(this);
 
         //---------- 식단 보기
-        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+        seeDiet();
+    }
+
+    /**
+     * 식단을 보여주는 함수
+     */
+    public void seeDiet(){
+        databaseReference.child("Diet").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 data_diet.clear();
@@ -102,8 +115,8 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
                     if(diet.getDate().equals(date)){
                         data_diet.add(diet);
                     }
+                    adapter_diet.notifyDataSetChanged();
                 }
-                adapter_diet.notifyDataSetChanged();
             }
 
             @Override
@@ -113,14 +126,12 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
         });
 
         adapter_diet = new DietAdapter(data_diet, this);
-
         rv_diet.setAdapter(adapter_diet);
-        //diet_lunch.setAdapter(adapter_diet);
-        //diet_dinner.setAdapter(adapter_diet);
+
     }
 
     /**
-     * 각 식단을 클릭하면 메뉴 추가 페이지로 넘어가는 함수
+     * 각 식단 버튼을 클릭하면 메뉴 추가 페이지로 넘어가는 함수
      * @param //view
      */
     @Override
@@ -137,12 +148,18 @@ public class AddDietActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             case R.id.tv_dinner :
                 time = "저녁";
+                break;
         }
         intent_addMenu.putExtra("date", date);
         intent_addMenu.putExtra("time", time);
         startActivity(intent_addMenu);
     }
 
+    /**
+     * 뒤로가기 버튼을 눌렀을 때 페이지를 종료하는 함수
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
