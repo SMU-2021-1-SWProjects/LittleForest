@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!--제목 클릭 후 내용 확인-->
+    <include
+        android:id="@+id/include"
+        layout="@layout/toolbar" />
+
+    <TextView
+        android:id="@+id/hotTopicViewTitle"
+        android:layout_width="275dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="288dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include" />
+
+    <TextView
+        android:id="@+id/hotTopicViewContext"
+        android:layout_width="280dp"
+        android:layout_height="126dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/hotTopicViewTitle"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
