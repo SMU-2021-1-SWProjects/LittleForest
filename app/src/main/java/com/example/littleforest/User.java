@@ -12,7 +12,7 @@ public class User {
 
 
     public User(EditText userEmail, String userName, String userPsw) {
-        // Default constructor required for calls to DataSnapshot.getValue(User.class)
+
     }
 
     public User(String name, String stature, String weight, String blood, String disease) {
@@ -69,6 +69,8 @@ public class User {
                 ", disease='" + disease + '\'' +
                 '}';
     }
+
+
 }
 
 

@@ -6,6 +6,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 
+//메인 로딩 화면
+
 public class SplashActivity extends Activity {
 
     protected void onCreate(Bundle saveInstanceState)

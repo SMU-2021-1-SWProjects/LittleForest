@@ -50,10 +50,13 @@ public class HealthInformation  extends AppCompatActivity {
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
         setContentView(R.layout.fragment_health_information);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기actionBar.setHomeAsUpIndicator(R.drawable.back_button);
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+
+        // actionBar.setHomeAsUpIndicator(R.drawable.back_button);
 
 
 
@@ -108,7 +111,7 @@ public class HealthInformation  extends AppCompatActivity {
 
 
         //수정 버튼 클릭시
-        Button modify = findViewById(R.id.healty_modify);
+        Button modify = findViewById(R.id.healthy_modify);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -146,7 +149,7 @@ public class HealthInformation  extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         // 저장 성공
-                        Toast.makeText(getApplicationContext(), "수정 완료되었습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HealthInformation.this, "수정 완료되었습니다.", Toast.LENGTH_SHORT).show();
 
                     }
                 })
@@ -154,7 +157,7 @@ public class HealthInformation  extends AppCompatActivity {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         // 저정 실패
-                        Toast.makeText(getApplicationContext(), "수정이 실패하였습니다.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(HealthInformation.this, "수정이 실패하였습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
 

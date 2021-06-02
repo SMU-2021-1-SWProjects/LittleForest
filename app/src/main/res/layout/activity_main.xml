@@ -16,7 +16,6 @@
 
 
 
-
     <!-- 네비 삽입 (네비게이션 바는 가장 하단의 놓아야 에러가 발생x)-->
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"

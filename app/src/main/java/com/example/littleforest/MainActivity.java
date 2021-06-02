@@ -5,12 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.littleforest.InputPage.EatingFood;
-import com.example.littleforest.InputPage.FoodPlus;
+import com.example.littleforest.InputPage.HotTopicService;
 import com.example.littleforest.InputPage.HealthInformation;
 import com.google.android.material.navigation.NavigationView;
-import com.lakue.lakuepopupactivity.PopupActivity;
-import com.lakue.lakuepopupactivity.PopupGravity;
-import com.lakue.lakuepopupactivity.PopupType;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +20,6 @@ import androidx.viewpager2.widget.ViewPager2;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -41,7 +37,8 @@ import static android.R.id.home;
     private ViewPager2 sliderViewPager;
     private LinearLayout layoutIndicator;
 
-    public String[] images = new String[] {
+
+      public String[] images = new String[] {
             //이미지 데이터 주소
             "https://postfiles.pstatic.net/MjAyMTA1MjZfMjk0/MDAxNjIyMDQxMTY3NTIx.PvOMdWfa5WwS2dGzZju6FDGPbM4EkVxi5ybRsW7kcNsg.xxda8XHkrKE4UgSJC1XOs9lzB6qfU17Pf4gSEORjozkg.PNG.skhy0715/DimageF.png?type=w966",
            "https://postfiles.pstatic.net/MjAyMTA1MjZfMTUg/MDAxNjIyMDQxMTY3NTE3.xUItyWdt9VMsdPlJuvvPkGKmxYV0HJturkLzVdSDtLMg.H5nsP_4UoS6EYRZdRVBJDtAU3n_gYZFGRm0fV6_iwZsg.PNG.skhy0715/DimageFT.png?type=w966",
@@ -65,13 +62,13 @@ import static android.R.id.home;
         actionBar.setHomeAsUpIndicator(R.drawable.menu); //메뉴(사이드바) 버튼 이미지 지정
 
 
+
     //이미지 드로어
         sliderViewPager = findViewById(R.id.sliderViewPager);
         layoutIndicator = findViewById(R.id.layoutIndicators);
 
         sliderViewPager.setOffscreenPageLimit(1);
         sliderViewPager.setAdapter(new ImageSliderAdapter(this, images));
-
         sliderViewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
@@ -94,7 +91,6 @@ import static android.R.id.home;
                 mDrawerLayout.closeDrawers();
 
                 int id = menuItem.getItemId();
-                //String title = menuItem.getTitle().toString();
 
                 switch(id){
                     case(R.id.healthIn):
@@ -110,12 +106,16 @@ import static android.R.id.home;
                         break;
 
                     case(R.id.hotTopic):
-                        //자신의 식단 추가 상황 + 식단 추가 입력 페이지로 이동 --> 핫토픽으로 수정
-                        Intent foodPlus_intent = new Intent(MainActivity.this, FoodPlus.class);
-                        startActivity(foodPlus_intent);
+                        //자신의 식단 추가 상황 + 식단 추가 입력 페이지로 이동 --> 핫토픽으로 수정(게시판형 글쓰기)
+                        Intent hottopic_intent = new Intent(MainActivity.this, HotTopicService.class);
+                        startActivity(hottopic_intent);
                         break;
 
-
+                    case(R.id.alarm):
+                        //자신의 식단 추가 상황 + 식단 추가 입력 페이지로 이동 --> 핫토픽으로 수정(게시판형 글쓰기)
+                        Intent alarm_intent = new Intent(MainActivity.this, AlarmActivity.class);
+                        startActivity(alarm_intent);
+                        break;
 
                 }
 
@@ -168,7 +168,7 @@ import static android.R.id.home;
     }
 
 
-    //이미지 드로어
+    //이미지 드로어 indicators(점) 지정 함수
     private void setupIndicators(int count) {
         ImageView[] indicators = new ImageView[count];
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -187,6 +187,7 @@ import static android.R.id.home;
         setCurrentIndicator(0);
     }
 
+    //밑에 점 비활성화 or 활성화 지정 함수
     private void setCurrentIndicator(int position) {
         int childCount = layoutIndicator.getChildCount();
         for (int i = 0; i < childCount; i++) {
@@ -205,4 +206,7 @@ import static android.R.id.home;
         }
     }//이미지 드로어 여기까지
 
-}
+
+
+
+  }

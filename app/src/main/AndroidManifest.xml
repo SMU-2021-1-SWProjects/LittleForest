@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Littleforest">
+
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
@@ -25,9 +26,18 @@
 
         <!--모든 activity는 AndroidManifest에서 정의-->
         <activity android:name=".MainActivity"/>
-        <activity android:name=".InputPage.FoodPlus"/>
-        <activity android:name=".InputPage.HealthInformation"/>
 
+        <!--알람-->
+        <activity android:name=".AlarmActivity"/>
+        <receiver android:name=".AlarmReceiver"/>
+
+        <activity android:name=".InputPage.HotTopicService"/>
+        <activity android:name=".InputPage.HotTopicWrite"/>
+        <activity android:name=".InputPage.HotTopicItemService"/>
+
+        <activity android:name=".InputPage.HotTopicView"/>
+
+        <activity android:name=".InputPage.HealthInformation"/>
         <activity android:name=".InputPage.EatingFood"/>
         <activity android:name=".InputPage.AddMenuActivity"/>
         <activity android:name=".InputPage.AddDietActivity"/>
