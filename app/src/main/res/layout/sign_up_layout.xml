@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <!--toolbar 삽입-->
+    <include layout="@layout/toolbar"/>
+
+    <TextView
+        android:id="@+id/sign_up_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="65dp"
+        android:text="회원가입"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/sign_up_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="이름"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_email"
+        app:layout_constraintEnd_toEndOf="@+id/sign_up_textView"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_textView" />
+
+    <EditText
+        android:id="@+id/sign_up_psw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_pswC"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_email" />
+
+    <EditText
+        android:id="@+id/sign_up_pswC"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="267dp"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_psw" />
+
+    <EditText
+        android:id="@+id/sign_up_email"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/sign_up_psw"
+        app:layout_constraintStart_toStartOf="@+id/sign_up_name" />
+
+    <Button
+        android:id="@+id/sign_up_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="168dp"
+        android:layout_marginTop="24dp"
+        android:text="회원 가입"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sign_up_pswC" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

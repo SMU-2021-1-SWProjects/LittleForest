@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    tools:context="InputPage.AddMenuActivity">
+
+    <!--toolbar 삽입-->
+    <include layout="@layout/toolbar"/>
+
+    <!--안내 사항-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+
+        android:text="※ 메뉴 추가/수정/저장 후 저장버튼을 꼭 눌러주세요"
+        android:textSize="15dp"
+        android:gravity="center">
+    </TextView>
+
+    <!--제목, 저장버튼-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <!--아침/점심/저녁 구분-->
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/edge"
+            android:padding="10dp"
+
+            android:text="아침/점심/저녁"
+            android:textSize="20dp"
+            android:gravity="center">
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/btn_save"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="12dp"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/ic_baseline_save_24">
+        </ImageButton>
+
+    </RelativeLayout>
+
+    <!--리사이클러뷰 : 메뉴 보기-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_menu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </androidx.recyclerview.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <!--메뉴 추가 버튼-->
+    <Button
+        android:id="@+id/btn_addMenu"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="right"
+        android:background="@drawable/ic_baseline_add_circle_24">
+    </Button>
+
+</LinearLayout>
