@@ -22,6 +22,7 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.example.littleforest.InputPage.EatingFood;
 import com.example.littleforest.InputPage.FoodPlus;
 import com.example.littleforest.InputPage.HealthInformation;
+import com.example.littleforest.InputPage.HotTopicService;
 import com.google.android.material.navigation.NavigationView;
 
 import static android.R.id.home;
@@ -106,8 +107,14 @@ import static android.R.id.home;
 
                     case(R.id.hotTopic):
                         //자신의 식단 추가 상황 + 식단 추가 입력 페이지로 이동 --> 핫토픽으로 수정
-                        Intent foodPlus_intent = new Intent(MainActivity.this, FoodPlus.class);
+                        Intent foodPlus_intent = new Intent(MainActivity.this, HotTopicService.class);
                         startActivity(foodPlus_intent);
+                        break;
+
+                    case(R.id.alarm):
+                        //자신의 식단 추가 상황 + 식단 추가 입력 페이지로 이동 --> 핫토픽으로 수정(게시판형 글쓰기)
+                        Intent alarm_intent = new Intent(MainActivity.this, AlarmActivity.class);
+                        startActivity(alarm_intent);
                         break;
 
 
