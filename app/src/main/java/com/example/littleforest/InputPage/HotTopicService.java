@@ -29,7 +29,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//식단 추가 -> 핫 토픽으로 변경
+//오늘 한줄 일기 서비스 
 public class HotTopicService extends AppCompatActivity {
 
 
@@ -91,8 +91,8 @@ public class HotTopicService extends AppCompatActivity {
 
                         //하위 value 가져옴
                         String title = fileSnapshot.child("title").getValue(String.class);
-                        String board = fileSnapshot.child("title").getValue(String.class);
-                        Log.i("HotTopicService: 불러온 게시글 제목  ", title);
+                        //String board = fileSnapshot.child("title").getValue(String.class);
+                        //Log.i("HotTopicService: 불러온 게시글 제목  ", title);
                         dataList.add(title);
 
 
