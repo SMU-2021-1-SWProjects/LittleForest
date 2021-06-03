@@ -3,14 +3,13 @@
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.littleforest.InputPage.EatingFood;
-import com.example.littleforest.InputPage.FoodPlus;
-import com.example.littleforest.InputPage.HealthInformation;
-import com.google.android.material.navigation.NavigationView;
-import com.lakue.lakuepopupactivity.PopupActivity;
-import com.lakue.lakuepopupactivity.PopupGravity;
-import com.lakue.lakuepopupactivity.PopupType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,14 +19,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import com.example.littleforest.InputPage.EatingFood;
+import com.example.littleforest.InputPage.FoodPlus;
+import com.example.littleforest.InputPage.HealthInformation;
+import com.google.android.material.navigation.NavigationView;
 
 import static android.R.id.home;
 
@@ -155,7 +150,7 @@ import static android.R.id.home;
 
                 //Toast.makeText(getApplicationContext(), "검색 버튼 클릭됨", Toast.LENGTH_LONG).show();
 
-                Intent eatingFood_intent = new Intent(MainActivity.this, FoodSearchActivity.class);
+                Intent eatingFood_intent = new Intent(MainActivity.this, searchfood.class);
                 startActivity(eatingFood_intent);
 
 
