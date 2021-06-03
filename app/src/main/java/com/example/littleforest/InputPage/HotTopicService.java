@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -35,6 +36,7 @@ public class HotTopicService extends AppCompatActivity {
 
     private ListView topicListView, topicItemView;
     private Button writetopic;
+    private TextView toolbarName;
 
     //(list view 불러오기)
     ArrayAdapter adapter;
@@ -64,7 +66,9 @@ public class HotTopicService extends AppCompatActivity {
             //주소할당
             writetopic = findViewById(R.id.hotTopicWriteBtn);
             topicListView = (ListView)findViewById(R.id.hotTopicListView);
+            toolbarName = findViewById(R.id.txv_toolbar);
 
+            toolbarName.setText("하루일기");
 
             adapter = new ArrayAdapter<String>(this, R.layout.hot_topic_list_item, dataList);
             topicListView.setAdapter(adapter);
