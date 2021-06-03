@@ -35,8 +35,6 @@
         <activity android:name=".InputPage.MyHealthActivity"/>
 
         <activity android:name=".FoodSearchActivity"/>
-        <activity android:name=".SearchFood.FoodinfoActivity"/>
-        <activity android:name=".SearchFood.SearchFoodInfoActivity"/>
 
 
 
