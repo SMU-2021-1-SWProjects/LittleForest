@@ -86,8 +86,8 @@ import java.util.ArrayList;
                                         Food food=new Food(ds.child("name").getValue(String.class)
                                                 ,ds.child("goodfood").getValue(String.class)
                                                 ,ds.child("badfood").getValue(String.class)
-                                                ,ds.child("getgfdisease").getValue(String.class)
-                                                ,ds.child("getbfdisease").getValue(String.class));
+                                                ,ds.child("gfdisease").getValue(String.class)
+                                                ,ds.child("bfdisease").getValue(String.class));
 
                                         if(food.getgoodfood() != null)
                                         {
