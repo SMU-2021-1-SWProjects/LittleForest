@@ -13,7 +13,10 @@ install : android studio version.4.2
 
 ## Project.찰떡궁합
 
-(데모 gif 삽입란 후에 수정 ) 
+
+
+https://user-images.githubusercontent.com/65939546/120685359-b5fb6c00-c4da-11eb-98f9-a7af6ac26696.mp4
+
 
 ```
 diet/health care application 
