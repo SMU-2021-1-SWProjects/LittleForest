@@ -27,7 +27,7 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".InputPage.FoodPlus"/>
         <activity android:name=".InputPage.HealthInformation"/>
-
+        <activity android:name=".searchfood"/>
         <activity android:name=".InputPage.EatingFood"/>
         <activity android:name=".InputPage.AddMenuActivity"/>
         <activity android:name=".InputPage.AddDietActivity"/>
