@@ -11,6 +11,9 @@
     <!--toolbar 삽입-->
     <include layout="@layout/toolbar"/>
 
+    <!--텍스트뷰 삽입-->
+    <include layout="@layout/main_textview"/>
+
     <!--이미지 드로어 삽입-->
     <include layout="@layout/image_drawer"/>
 
