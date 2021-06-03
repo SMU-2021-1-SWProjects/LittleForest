@@ -42,6 +42,9 @@
         <activity android:name=".InputPage.AddMenuActivity"/>
         <activity android:name=".InputPage.AddDietActivity"/>
 
+        <activity android:name=".foodInfo.FoodinfoActivity"/>
+        <activity android:name=".foodInfo.SearchFoodInfoActivity"/>
+
 
         <!---->
 

@@ -23,6 +23,7 @@ import com.example.littleforest.InputPage.EatingFood;
 import com.example.littleforest.InputPage.FoodPlus;
 import com.example.littleforest.InputPage.HealthInformation;
 import com.example.littleforest.InputPage.HotTopicService;
+import com.example.littleforest.foodInfo.SearchFoodInfoActivity;
 import com.google.android.material.navigation.NavigationView;
 
 import static android.R.id.home;
@@ -117,7 +118,11 @@ import static android.R.id.home;
                         startActivity(alarm_intent);
                         break;
 
-
+                    case(R.id.foodInfo):
+                        //음식 영양정보 검색 -> 음식검색 페이지로 이동
+                        Intent foodInfo_intent = new Intent(MainActivity.this, SearchFoodInfoActivity.class);
+                        startActivity(foodInfo_intent);
+                        break;
 
                 }
 
