@@ -1,6 +1,7 @@
 package com.example.littleforest.InputPage;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -67,5 +68,21 @@ public class MyHealthActivity extends AppCompatActivity {
     public void getFoodInfoData(){
         my_foodInfoList.clear();
 
+    }
+
+    /**
+     * 뒤로가기 버튼을 눌렀을 때 페이지를 종료하는 함수
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
