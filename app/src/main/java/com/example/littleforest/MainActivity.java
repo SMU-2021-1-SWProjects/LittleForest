@@ -3,14 +3,13 @@
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.example.littleforest.InputPage.EatingFood;
-import com.example.littleforest.InputPage.FoodPlus;
-import com.example.littleforest.InputPage.HealthInformation;
-import com.google.android.material.navigation.NavigationView;
-import com.lakue.lakuepopupactivity.PopupActivity;
-import com.lakue.lakuepopupactivity.PopupGravity;
-import com.lakue.lakuepopupactivity.PopupType;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,14 +19,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
+import com.example.littleforest.InputPage.EatingFoodActivity;
+import com.example.littleforest.InputPage.FoodPlus;
+import com.example.littleforest.InputPage.HealthInformation;
+import com.google.android.material.navigation.NavigationView;
 
 import static android.R.id.home;
 
@@ -105,7 +100,7 @@ import static android.R.id.home;
 
                     case(R.id.foodSetting):
                         //자신의 식단 정보 + 삭단 음식 입력 페이지로 이동
-                        Intent eatingFood_intent = new Intent(MainActivity.this, EatingFood.class);
+                        Intent eatingFood_intent = new Intent(MainActivity.this, EatingFoodActivity.class);
                         startActivity(eatingFood_intent);
                         break;
 

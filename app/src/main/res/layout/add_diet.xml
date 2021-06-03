@@ -49,7 +49,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_weight="1"
-            android:background="#d3d3d3"
+            android:background="@drawable/edge"
+            android:backgroundTint="#d3d3d3"
 
             android:text="아침"
             android:textSize="20dp"
@@ -65,7 +66,8 @@
             android:layout_marginRight="10dp"
             android:padding="5dp"
             android:layout_weight="0.9"
-            android:background="#d3d3d3"
+            android:background="@drawable/edge"
+            android:backgroundTint="#d3d3d3"
 
             android:text="점심"
             android:textSize="20dp"
@@ -79,7 +81,8 @@
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:layout_weight="1"
-            android:background="#d3d3d3"
+            android:background="@drawable/edge"
+            android:backgroundTint="#d3d3d3"
 
             android:text="저녁"
             android:textSize="20dp"

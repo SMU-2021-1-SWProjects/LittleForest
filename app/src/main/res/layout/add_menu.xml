@@ -68,12 +68,14 @@
     </LinearLayout>
 
     <!--메뉴 추가 버튼-->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_addMenu"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_gravity="right"
-        android:background="@drawable/ic_baseline_add_circle_24">
-    </Button>
+        android:layout_margin="10dp"
+        android:background="@drawable/ic_baseline_add_circle_24"
+        android:backgroundTint="@color/base">
+    </androidx.appcompat.widget.AppCompatButton>
 
 </LinearLayout>

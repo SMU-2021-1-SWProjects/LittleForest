@@ -1,14 +1,16 @@
 package com.example.littleforest.InputPage;
 
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -125,35 +127,7 @@ class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.CustomViewHolder> {
      */
     public void modify(int position) {
         try{
-            // 다이어로그 불러오기
-            EditText editText = new EditText(((AddMenuActivity)AddMenuActivity.addMenuContext));
-            String beforeMenu = data_menu.get(position);
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(((AddMenuActivity)AddMenuActivity.addMenuContext));
-            builder.setMessage("이 메뉴를 수정하시겠습니까?");
-            builder.setView(editText);
-            editText.setText(beforeMenu);
-
-            // Yes 버튼 : 메뉴 수정
-            builder.setNegativeButton("Yes", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    String afterMenu = editText.getText().toString();
-                    data_menu.set(position, afterMenu);
-                    notifyDataSetChanged();
-                }
-            });
-
-            // No 버튼 : 메뉴 수정 취소
-            builder.setPositiveButton("No", new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialog, int which) {
-                    dialog.cancel();
-                }
-            });
-
-            //다이어로그 실행
-            builder.show();
+            ((AddMenuActivity)AddMenuActivity.addMenuContext).addMenu("modify");
 
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
@@ -166,7 +140,36 @@ class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.CustomViewHolder> {
      */
     public void remove(int position) {
         try{
-            // 다이어로그 불러오기
+
+            Dialog dialog_removeMenu = new Dialog((AddMenuActivity)AddMenuActivity.addMenuContext);dialog_removeMenu.setContentView(R.layout.eatingfood_dialog_remove);
+
+            TextView tv_eatingfood_yes = dialog_removeMenu.findViewById(R.id.tv_eatingfood_yes);
+            TextView tv_eatingfood_no = dialog_removeMenu.findViewById(R.id.tv_eatingfood_no);
+
+            // 다이얼로그 불러오기
+            dialog_removeMenu.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+            dialog_removeMenu.show();
+
+            // Yes 버튼 -> 메뉴를 삭제하고 다이얼로그 종료
+            tv_eatingfood_yes.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    data_menu.remove(position);
+                    notifyItemRemoved(position);
+
+                    dialog_removeMenu.cancel();
+                }
+            });
+
+            // No 버튼 -> 다이얼로그 종료
+            tv_eatingfood_no.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog_removeMenu.cancel();
+                }
+            });
+
+            /*// 다이어로그 불러오기
             AlertDialog.Builder builder = new AlertDialog.Builder(((AddMenuActivity)AddMenuActivity.addMenuContext));
             builder.setMessage("이 메뉴를 삭제하시겠습니까?");
 
@@ -188,10 +191,122 @@ class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.CustomViewHolder> {
             });
 
             // 다이어로그 실행
-            builder.show();
+            builder.show();*/
 
         }catch (IndexOutOfBoundsException e){
             e.printStackTrace();
         }
     }
 }
+
+//---------- 다이얼그램 어댑터
+class EatingFoodSearchAdapter extends BaseAdapter implements Filterable {
+
+    private ArrayList<EatingFoodSearch> listViewItemList = new ArrayList<>();
+    private ArrayList<EatingFoodSearch> filteredItemList = listViewItemList;
+
+    Filter listFilter;
+
+    public EatingFoodSearchAdapter(){
+
+    }
+
+    @Override
+    public int getCount() {
+        return filteredItemList.size();
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return filteredItemList.get(position);
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final int position1 = position;
+        final Context context = parent.getContext();
+
+        if(convertView == null){
+            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            convertView = inflater.inflate(R.layout.eatingfood_listview_item, parent, false);
+        }
+
+        TextView textView = (TextView) convertView.findViewById(R.id.eatingfood_search);
+
+        EatingFoodSearch listView = filteredItemList.get(position);
+
+        textView.setText(listView.getEatingfood_search());
+
+        // 리스트뷰 내 아이템 short 클릭 시 -> 다이얼로그의 텍스트에디터에 값 전달
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String clicked_food_name = textView.getText().toString();
+                ((AddMenuActivity)AddMenuActivity.addMenuContext).messageFoodName(clicked_food_name);
+            }
+        });
+
+
+        return convertView;
+    }
+
+    public void addItem(String text){
+        EatingFoodSearch item = new EatingFoodSearch();
+
+        item.setEatingfood_search(text);
+
+        listViewItemList.add(item);
+    }
+
+    @Override
+    public Filter getFilter() {
+        if(listFilter == null) {
+            listFilter = new ListFilter();
+        }
+
+        return listFilter;
+    }
+
+    private class ListFilter extends Filter {
+
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            FilterResults results = new FilterResults();
+
+            if(constraint == null || constraint.length() == 0){
+                results.values = listViewItemList;
+                results.count = listViewItemList.size();
+            }else {
+                ArrayList<EatingFoodSearch> itemList = new ArrayList<>();
+
+                for (EatingFoodSearch item : listViewItemList) {
+                    if (item.getEatingfood_search().toUpperCase().contains(constraint.toString().toUpperCase())) {
+                        itemList.add(item);
+                    }
+                }
+
+                results.values = itemList;
+                results.count = itemList.size();
+            }
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            filteredItemList = (ArrayList<EatingFoodSearch>) results.values;
+
+            if (results.count > 0) {
+                notifyDataSetChanged();
+            } else {
+                notifyDataSetInvalidated();
+            }
+        }
+    }
+}
+
