@@ -2,14 +2,18 @@ package com.example.littleforest;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -26,12 +30,23 @@ public class searchfood extends AppCompatActivity
 {
     DatabaseReference mref;
     private ListView listdata;
+    private TextView toolbarName;
     private AutoCompleteTextView txtsearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchfood);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기actionBar.setHomeAsUpIndicator(R.drawable.back_button);
+
+
+        toolbarName = findViewById(R.id.txv_toolbar);
+        toolbarName.setText("상성정보 검색");
+
 
         mref = FirebaseDatabase.getInstance().getReference("Food");
         listdata=(ListView)findViewById(R.id.listData);
@@ -81,26 +96,32 @@ public class searchfood extends AppCompatActivity
                             if(snapshot.exists())
                             {
                                 ArrayList<String> listfood = new ArrayList<>();
-                                for(DataSnapshot ds:snapshot.getChildren()) {
-                                    Food food = new Food(ds.child("name").getValue(String.class)
-                                            , ds.child("goodfood").getValue(String.class)
-                                            , ds.child("badfood").getValue(String.class)
-                                            , ds.child("gfdisease").getValue(String.class)
-                                            , ds.child("bfdisease").getValue(String.class));
+                                for(DataSnapshot ds:snapshot.getChildren())
+                                {
+                                    Food food=new Food(ds.child("name").getValue(String.class)
+                                            ,ds.child("goodfood").getValue(String.class)
+                                            ,ds.child("badfood").getValue(String.class)
+                                            ,ds.child("gfdisease").getValue(String.class)
+                                            ,ds.child("bfdisease").getValue(String.class));
 
-                                    if (food.getgoodfood() != null) {
+                                    if(food.getgoodfood() != null)
+                                    {
                                         listfood.add(food.getname() + "의 상성음식 \n" + food.getgoodfood());
                                     }
-                                    if (food.getbadfood() != null) {
+                                    if(food.getbadfood() != null)
+                                    {
                                         listfood.add(food.getname() + "의 상극음식 \n" + food.getbadfood());
                                     }
-                                    if (food.getgfdisease() != null) {
-                                        listfood.add(food.getgfdisease() + "에 좋지 않은 음식입니다.");
+                                    if(food.getgfdisease() != null)
+                                    {
+                                        listfood.add(food.getgfdisease() + "에 좋은 음식입니다. ");
                                     }
-                                    else if (food.getbfdisease() != null) {
-                                        listfood.add(food.getbfdisease() + "에 좋은 음식입니다.");
+                                    else if(food.getbfdisease() != null)
+                                    {
+                                        listfood.add(food.getbfdisease() + "에 좋지 않은 음식입니다.");
                                     }
-                                    else {
+                                    else
+                                    {
                                         listfood.add("지병 정보가 없습니다.");
                                     }
                                 }
@@ -125,6 +146,7 @@ public class searchfood extends AppCompatActivity
                         this.gfdisease = gfdisease;
                         this.bfdisease = bfdisease;
                     }
+
                     public Food(){}
 
                     public String getname() {
@@ -159,5 +181,18 @@ public class searchfood extends AppCompatActivity
         {
             Log.d("Food,", "No data found");
         }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
+
+
     }
 }
