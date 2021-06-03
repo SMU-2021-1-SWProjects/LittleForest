@@ -32,6 +32,7 @@ public class AlarmActivity extends AppCompatActivity {
 
     Button register, unregister;
 
+    private TextView toolbarName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,9 @@ public class AlarmActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+
+        toolbarName = findViewById(R.id.txv_toolbar);
+        toolbarName.setText("알람");
 
         //알람 매니저 초기화
         alarmManager = (AlarmManager)getSystemService(Context.ALARM_SERVICE);
