@@ -5,13 +5,17 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.littleforest.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -37,12 +41,23 @@ public class SearchFoodInfoActivity extends AppCompatActivity {
     private SearchFoodInfoAdapter searchFoodInfoAdapter;
 
     private Context mContext;
+    private TextView toolbarName;
     private LayoutInflater mLayoutInflater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchfoodinfo);
+
+
+        //툴바
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
+
+        toolbarName = findViewById(R.id.txv_toolbar);
+        toolbarName.setText("영양정보 검색");
 
 //        //데이터 db 저장
 //        this.load();
@@ -155,5 +170,17 @@ public class SearchFoodInfoActivity extends AppCompatActivity {
                 servingSize, servingUnit, fat);
 
         foodRef.add(foodInfo);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
+                finish();
+                return true;
+            }
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
