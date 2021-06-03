@@ -101,9 +101,13 @@ import java.util.ArrayList;
                                         {
                                             listfood.add(food.getgfdisease() + "에 좋지 않은 음식입니다.");
                                         }
-                                        if(food.getbfdisease() != null)
+                                        else if(food.getbfdisease() != null)
                                         {
                                             listfood.add(food.getbfdisease() + "에 좋은 음식입니다.");
+                                        }
+                                        else
+                                        {
+                                            listfood.add("지병 정보가 없습니다.");
                                         }
                                     }
                                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,listfood);
