@@ -61,7 +61,7 @@ import java.util.ArrayList;
                     names.add(name);
                 }
 
-                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, names);
+                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,names);
                 txtsearch.setAdapter(adapter);
                 txtsearch.setOnItemClickListener(new AdapterView.OnItemClickListener()
                 {
@@ -86,7 +86,8 @@ import java.util.ArrayList;
                                         Food food=new Food(ds.child("name").getValue(String.class)
                                                 ,ds.child("goodfood").getValue(String.class)
                                                 ,ds.child("badfood").getValue(String.class)
-                                                ,ds.child("disease").getValue(String.class));
+                                                ,ds.child("getgfdisease").getValue(String.class)
+                                                ,ds.child("getbfdisease").getValue(String.class));
 
                                         if(food.getgoodfood() != null)
                                         {
@@ -96,9 +97,13 @@ import java.util.ArrayList;
                                         {
                                             listfood.add(food.getname() + "의 상극음식 \n" + food.getbadfood());
                                         }
-                                        if(food.getdisease() != null)
+                                        if(food.getgfdisease() != null)
                                         {
-                                            listfood.add(food.getdisease() + "에 좋지 않은 음식입니다.");
+                                            listfood.add(food.getgfdisease() + "에 좋지 않은 음식입니다.");
+                                        }
+                                        if(food.getbfdisease() != null)
+                                        {
+                                            listfood.add(food.getbfdisease() + "에 좋은 음식입니다.");
                                         }
                                     }
                                     ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,listfood);
@@ -114,12 +119,13 @@ import java.util.ArrayList;
                     }
                     class Food
                     {
-                        public Food(String name, String goodfood, String badfood, String disease)
+                        public Food(String name, String goodfood, String badfood, String gfdisease, String bfdisease)
                         {
                             this.name = name;
                             this.goodfood = goodfood;
                             this.badfood = badfood;
-                            this.disease = disease;
+                            this.gfdisease = gfdisease;
+                            this.bfdisease = bfdisease;
                         }
                         public Food(){}
 
@@ -135,14 +141,19 @@ import java.util.ArrayList;
                             return badfood;
                         }
 
-                        public String getdisease() {
-                            return disease;
+                        public String getgfdisease() {
+                            return gfdisease;
+                        }
+
+                        public String getbfdisease() {
+                            return bfdisease;
                         }
 
                         public String name;
                         public String goodfood;
                         public String badfood;
-                        public String disease;
+                        public String gfdisease;
+                        public String bfdisease;
                     }
                 });
             }
