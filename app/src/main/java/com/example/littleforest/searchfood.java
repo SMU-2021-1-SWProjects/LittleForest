@@ -81,29 +81,27 @@ public class searchfood extends AppCompatActivity
                             if(snapshot.exists())
                             {
                                 ArrayList<String> listfood = new ArrayList<>();
-                                for(DataSnapshot ds:snapshot.getChildren())
-                                {
-                                    Food food=new Food(ds.child("name").getValue(String.class)
-                                            ,ds.child("goodfood").getValue(String.class)
-                                            ,ds.child("badfood").getValue(String.class)
-                                            ,ds.child("gfdisease").getValue(String.class)
-                                            ,ds.child("bfdisease").getValue(String.class));
+                                for(DataSnapshot ds:snapshot.getChildren()) {
+                                    Food food = new Food(ds.child("name").getValue(String.class)
+                                            , ds.child("goodfood").getValue(String.class)
+                                            , ds.child("badfood").getValue(String.class)
+                                            , ds.child("gfdisease").getValue(String.class)
+                                            , ds.child("bfdisease").getValue(String.class));
 
-                                    if(food.getgoodfood() != null)
-                                    {
+                                    if (food.getgoodfood() != null) {
                                         listfood.add(food.getname() + "의 상성음식 \n" + food.getgoodfood());
                                     }
-                                    if(food.getbadfood() != null)
-                                    {
+                                    if (food.getbadfood() != null) {
                                         listfood.add(food.getname() + "의 상극음식 \n" + food.getbadfood());
                                     }
-                                    if(food.getgfdisease() != null)
-                                    {
+                                    if (food.getgfdisease() != null) {
                                         listfood.add(food.getgfdisease() + "에 좋지 않은 음식입니다.");
                                     }
-                                    if(food.getbfdisease() != null)
-                                    {
+                                    else if (food.getbfdisease() != null) {
                                         listfood.add(food.getbfdisease() + "에 좋은 음식입니다.");
+                                    }
+                                    else {
+                                        listfood.add("지병 정보가 없습니다.");
                                     }
                                 }
                                 ArrayAdapter arrayAdapter = new ArrayAdapter(getApplicationContext(),android.R.layout.simple_list_item_1,listfood);
