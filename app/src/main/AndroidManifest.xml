@@ -25,12 +25,25 @@
 
         <!--모든 activity는 AndroidManifest에서 정의-->
         <activity android:name=".MainActivity"/>
+
+        <!--알람-->
+        <activity android:name=".AlarmActivity"/>
+        <receiver android:name=".AlarmReceiver"/>
+
+        <!--Hot topic service-->
+        <activity android:name=".InputPage.HotTopicService"/>
+        <activity android:name=".InputPage.HotTopicWrite"/>
+
+
         <activity android:name=".InputPage.FoodPlus"/>
         <activity android:name=".InputPage.HealthInformation"/>
         <activity android:name=".searchfood"/>
         <activity android:name=".InputPage.EatingFood"/>
         <activity android:name=".InputPage.AddMenuActivity"/>
         <activity android:name=".InputPage.AddDietActivity"/>
+
+        <activity android:name=".foodInfo.FoodinfoActivity"/>
+        <activity android:name=".foodInfo.SearchFoodInfoActivity"/>
 
 
         <!---->
