@@ -48,7 +48,6 @@ public class AlarmActivity extends AppCompatActivity {
     Button register, unregister;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,9 +73,11 @@ public class AlarmActivity extends AppCompatActivity {
         currentTime = findViewById(R.id.TimetextView);
 
 
+
         //현재 시간 가져오기
         long nowTime = System.currentTimeMillis();
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh : mm : ss");
+
 
         //한국 시간대로 변경
         //TimeZone korTime = TimeZone.getTimeZone("Asia/Seoul");
@@ -142,10 +143,6 @@ public class AlarmActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
 
 
 

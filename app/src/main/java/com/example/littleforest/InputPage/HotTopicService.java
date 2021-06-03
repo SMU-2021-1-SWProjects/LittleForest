@@ -23,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
+import java.net.CookieHandler;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,7 +39,6 @@ public class HotTopicService extends AppCompatActivity {
     ArrayAdapter adapter;
     List dataList = new ArrayList<>();
     static boolean called = false;
-
 
 
     protected void onCreate(Bundle saveInstanceState)
@@ -74,7 +74,7 @@ public class HotTopicService extends AppCompatActivity {
             FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference databaseReference = database.getReference("board");
 
-            //더 하위 값 데이터 불러옴
+            //title 데이터 불러옴
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -85,12 +85,11 @@ public class HotTopicService extends AppCompatActivity {
                         String str = fileSnapshot.child("title").getValue(String.class);
                         Log.i("HotTopicService: 불러온 게시글 제목  ", str);
                         dataList.add(str);
+
+
                     }
                     adapter.notifyDataSetChanged();
                 }
-
-
-
 
 
                 @Override
@@ -110,7 +109,33 @@ public class HotTopicService extends AppCompatActivity {
                 }
             });
 
+
+
+            //listView 클릭 후 이동
+            topicListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView parent, View view, int position, long id) {
+
+                    //리스트 뷰의 포지션
+                    //int listViewPostion = topicListView.getCheckedItemPosition();
+                    TopicBoard tb = (TopicBoard) parent.getAdapter().getItem(position);
+
+                    String title = tb.getTitleBoard();
+                    String context = tb.getContentsBoard();
+
+                    Intent dataIntent = new Intent(HotTopicService.this, HotTopicView.class);
+                    dataIntent.putExtra("title", title);
+                    dataIntent.putExtra("context", context);
+                    startActivity(dataIntent);
+
+                }
+            });
+
         }
+
+
+
+
 
 
 

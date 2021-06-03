@@ -120,7 +120,7 @@ public class HealthInformation  extends AppCompatActivity {
                 String getWeight = readWeight.getText().toString();
                 String getBlood = bspinner.getSelectedItem().toString();
                 String getDisease = dspinner.getSelectedItem().toString();
-
+                
                 //haspmap 만들기 (데이터 베이스에 삽입)
                 HashMap result = new HashMap<>();
                 result.put("name", getUserName);
@@ -132,6 +132,7 @@ public class HealthInformation  extends AppCompatActivity {
 
 
                 writeHeathInformation("1", getUserName, getStature, getWeight, getBlood, getDisease);
+
 
             }
 

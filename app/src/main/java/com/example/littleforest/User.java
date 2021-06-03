@@ -2,6 +2,8 @@ package com.example.littleforest;
 
 import android.widget.EditText;
 
+import java.util.Set;
+
 public class User {
 
     public String name;
@@ -69,7 +71,6 @@ public class User {
                 ", disease='" + disease + '\'' +
                 '}';
     }
-
 
 }
 
