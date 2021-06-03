@@ -51,21 +51,20 @@ public class FoodInfoAdapter extends BaseAdapter {
         TextView dietaryFiber = (TextView)view.findViewById(R.id.textView_dietaryFiber);
         TextView na = (TextView)view.findViewById(R.id.textView_na);
         TextView k = (TextView)view.findViewById(R.id.textView_k);
-        TextView goodfood = (TextView)view.findViewById(R.id.textView_goodfood);
-        TextView badfood = (TextView)view.findViewById(R.id.textView_badfood);
+        TextView servingSize = (TextView)view.findViewById(R.id.textView_servingSize);
+        TextView fat = (TextView)view.findViewById(R.id.textView_fat);
 
         name.setText((foodInfo.get(position).getName()));
         calorie.setText("칼로리: " + (String.valueOf(foodInfo.get(position).getCalorie())) + (foodInfo.get(position).getCalUnit()));
-        carbohydrate.setText("탄수화물: " + (String.valueOf(foodInfo.get(position).getCarbohydrate())));
-        sugar.setText("당: " + String.valueOf(foodInfo.get(position).getSugar()));
-        protein.setText("단백질: " + String.valueOf(foodInfo.get(position).getProtein()));
-        cholesterol.setText("콜레스테롤: " + String.valueOf(foodInfo.get(position).getCholesterol()));
-        dietaryFiber.setText("식이섬유: " + String.valueOf(foodInfo.get(position).getDietaryFiber()));
-        na.setText("나트륨: " + String.valueOf(foodInfo.get(position).getNa()));
-        k.setText("칼륨: " + String.valueOf(foodInfo.get(position).getK()));
-        goodfood.setText("상성 좋은 음식: " + foodInfo.get(position).getGoodfood());
-        badfood.setText("상성에 좋지 않은 음식: " + foodInfo.get(position).getBadfood());
-
+        carbohydrate.setText("탄수화물: " + (String.valueOf(foodInfo.get(position).getCarbohydrate())) + "g");
+        sugar.setText("당: " + String.valueOf(foodInfo.get(position).getSugar()) + "g");
+        protein.setText("단백질: " + String.valueOf(foodInfo.get(position).getProtein() + "g"));
+        cholesterol.setText("콜레스테롤: " + String.valueOf(foodInfo.get(position).getCholesterol()) + "g");
+        dietaryFiber.setText("식이섬유: " + String.valueOf(foodInfo.get(position).getDietaryFiber()) + "g");
+        na.setText("나트륨: " + String.valueOf(foodInfo.get(position).getNa()) + "mg");
+        k.setText("칼륨: " + String.valueOf(foodInfo.get(position).getK()) + "mg");
+        servingSize.setText("1회 제공량: " +(foodInfo.get(position).getServingSize())+ (foodInfo.get(position).getServingUnit()));
+        fat.setText("지방: " + foodInfo.get(position).getFat()+ "mg");
         return view;
     }
 }

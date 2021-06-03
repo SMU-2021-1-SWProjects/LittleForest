@@ -11,7 +11,7 @@ import com.example.littleforest.R;
 import java.util.ArrayList;
 
 public class FoodinfoActivity extends AppCompatActivity {
-    private static final String TAG = "SearchFoodActivity";
+    private static final String TAG = "FoodinfoActivity";
 
     private ArrayList<FoodInfo> foodInfo;
 
@@ -37,11 +37,12 @@ public class FoodinfoActivity extends AppCompatActivity {
         final int na = intent.getIntExtra("na", 1);
         final int k = intent.getIntExtra("k", 1);
 
-        final String goodfood = intent.getStringExtra("goodfood");
-        final String badfood = intent.getStringExtra("badfood");
+        final int servingSize = intent.getIntExtra("servingSize", 1);
+        final String servingUnit = intent.getStringExtra("servingUnit");
+        final int fat = intent.getIntExtra("fat", 1);
 
         this.InitializeMovieData(name, calorie, calUnit, carbohydrate, sugar, protein,
-                cholesterol, dietaryFiber, na, k, goodfood, badfood);
+                cholesterol, dietaryFiber, na, k, servingSize, servingUnit, fat);
 
 
         // lisrview Adapter 연결
@@ -53,10 +54,10 @@ public class FoodinfoActivity extends AppCompatActivity {
 
     public void InitializeMovieData(String name, int calorie, String calUnit, int carbohydrate,
                                     int sugar, int protein, int cholesterol, int dietaryFiber, int na, int k,
-                                    String goodfood, String badfood)
+                                    int servingSize, String servingUnit, int fat)
     {
         foodInfo = new ArrayList<FoodInfo>();
         foodInfo.add(new FoodInfo(name, calorie, calUnit, carbohydrate, sugar, protein,
-                cholesterol, dietaryFiber, na, k, goodfood, badfood));
+                cholesterol, dietaryFiber, na, k, servingSize, servingUnit, fat));
     }
 }

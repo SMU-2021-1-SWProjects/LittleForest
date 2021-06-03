@@ -33,6 +33,16 @@
                 android:textSize="20sp"
                 android:layout_marginRight="10dp"
                 android:text="칼로리" />
+
+            <TextView
+                android:id="@+id/text_carbohydrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:text="탄수화물" />
+
             <TextView
                 android:id="@+id/text_protein"
                 android:layout_width="wrap_content"
@@ -60,6 +70,17 @@
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="4dp"
                 android:text="1" />
+
+            <TextView
+                android:id="@+id/carbohydrate_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="4dp"
+                android:text="1" />
+
             <TextView
                 android:id="@+id/protein_num"
                 android:layout_width="wrap_content"

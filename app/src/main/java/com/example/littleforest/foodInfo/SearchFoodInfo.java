@@ -4,6 +4,7 @@ public class SearchFoodInfo {
     private String name;
     private int calorie;
     private int protein;
+    private int fat;
 
     public SearchFoodInfo() {
         //public no-arg constructor needed
@@ -13,6 +14,7 @@ public class SearchFoodInfo {
         this.name = name;
         this.calorie = calorie;
         this.protein = protein;
+        this.fat = fat;
     }
 
     public String getName() {
@@ -37,5 +39,13 @@ public class SearchFoodInfo {
 
     public void setProtein(int protein) {
         this.protein = protein;
+    }
+
+    public int getFat() {
+        return fat;
+    }
+
+    public void setFat(int fat) {
+        this.fat = fat;
     }
 }
