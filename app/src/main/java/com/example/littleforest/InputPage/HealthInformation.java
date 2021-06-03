@@ -41,10 +41,12 @@ import java.util.List;
 public class HealthInformation  extends AppCompatActivity {
 
 
-    EditText readName, readWeight, readStature;
-    Spinner dspinner, bspinner;
+    public EditText readName, readWeight, readStature;
+    public Spinner dspinner, bspinner;
+
 
     TextView NaviUserName;
+    private TextView toolbarName;
     private DatabaseReference mDatabase;
 
     protected void onCreate(Bundle saveInstanceState) {
@@ -56,6 +58,8 @@ public class HealthInformation  extends AppCompatActivity {
         actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기actionBar.setHomeAsUpIndicator(R.drawable.back_button);
 
 
+        toolbarName = findViewById(R.id.txv_toolbar);
+        toolbarName.setText("건강정보입력");
 
 
         //건강정보 입력 텍스트 박스 불러오기
@@ -69,6 +73,7 @@ public class HealthInformation  extends AppCompatActivity {
 
         //네비바 위에 유저 이름
         NaviUserName = findViewById(R.id.username);
+
 
         //firebase 정의
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -110,6 +115,8 @@ public class HealthInformation  extends AppCompatActivity {
         //수정 버튼 클릭시
         Button modify = findViewById(R.id.healty_modify);
         modify.setOnClickListener(new View.OnClickListener() {
+
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
                 String getUserName = readName.getText().toString();
