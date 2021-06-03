@@ -1,69 +1,69 @@
 package com.example.littleforest.InputPage;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.widget.CalendarView;
-import android.widget.TextView;
+import java.util.ArrayList;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
+class Diet {
+    public String date;
+    public String time;
+    public ArrayList<String> menu;
 
-import com.example.littleforest.MainActivity;
-import com.example.littleforest.R;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-
-//식단 음식 입력
-public class EatingFood extends AppCompatActivity {
-
-    private static final String TAG = "MainActivity";
-
-    // 페이지
-    private TextView txv_toolbar;
-    private CalendarView calendarView;
-
-    protected void onCreate(Bundle saveInstanceState){
-        super.onCreate(saveInstanceState);
-        setContentView(R.layout.eating_food);
-
-        //---------- toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true); // 뒤로가기 버튼 만들기
-
-        //---------- 페이지 이름
-        txv_toolbar = (TextView) findViewById(R.id.txv_toolbar);
-        txv_toolbar.setText("식단 입력");
-
-        //---------- findViewById
-        calendarView = (CalendarView) findViewById(R.id.calendar);
-
-        //---------- 페이지 전환 : 어떤 날을 클릭 -> 그 날의 식단 페이지
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String date = year + "/" + (month + 1) + "/" + dayOfMonth;
-
-                Intent intent_addDiet = new Intent(EatingFood.this, AddDietActivity.class);
-                intent_addDiet.putExtra("date", date);
-                startActivity(intent_addDiet);
-            }
-        });
+    public Diet(){
+        // Default constructor required for calls to DataSnapshot.getValue(User.class)
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:{ // 뒤로가기 버튼 눌렀을 때
-                finish();
-                return true;
+    public Diet(String date, String time, ArrayList<String> menu){
+        this.date = date;
+        this.time = time;
+        this.menu = menu;
+    }
+
+    //---------- set 함수
+    public void setDate(String date){
+        this.date = date;
+    }
+    public void setTime(String time){
+        this.time = time;
+    }
+    public void setMenu(ArrayList<String> menu){
+        this.menu = menu;
+    }
+
+    //--------- get 함수
+    public String getDate(){
+        return date;
+    }
+    public String getTime(){
+        return time;
+    }
+    public ArrayList<String> getMenu(){
+        return menu;
+    }
+
+    //---------- toString 함수
+    public String toString(){
+        String string_menu = "";
+
+        for(int i = 0 ; i < this.menu.size() ; i++){
+            if(i == 0){
+                string_menu += this.menu.get(i);
+            }else{
+                string_menu += "\n" + this.menu.get(i);
             }
         }
-        return super.onOptionsItemSelected(item);
+
+        return string_menu;
     }
+}
+
+class EatingFoodSearch {
+    private String eatingfood_search;
+
+    public void setEatingfood_search(String eatingfood_search){
+        this.eatingfood_search = eatingfood_search;
+    }
+
+    public String getEatingfood_search(){
+        return eatingfood_search;
+    }
+
 }

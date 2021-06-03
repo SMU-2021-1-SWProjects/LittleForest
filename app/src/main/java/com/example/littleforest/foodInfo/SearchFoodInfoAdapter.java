@@ -44,11 +44,15 @@ public class SearchFoodInfoAdapter extends BaseAdapter {
 
         TextView text_name = (TextView)view.findViewById(R.id.text_name);
         TextView calorie_num = (TextView)view.findViewById(R.id.calorie_num);
+        TextView carbohydrate_num = (TextView)view.findViewById(R.id.carbohydrate_num);
         TextView protein_num = (TextView)view.findViewById(R.id.protein_num);
+        TextView fat_num = (TextView)view.findViewById(R.id.Fat_num);
 
         text_name.setText(foodInfo.get(position).getName());
         calorie_num.setText(String.valueOf(foodInfo.get(position).getCalorie()));
         protein_num.setText(String.valueOf(foodInfo.get(position).getProtein()));
+        fat_num.setText(String.valueOf(foodInfo.get(position).getFat()));
+        carbohydrate_num.setText(String.valueOf(foodInfo.get(position).getCarbohydrate()));
 
         return view;
     }

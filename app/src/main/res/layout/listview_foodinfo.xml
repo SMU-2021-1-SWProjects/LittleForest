@@ -22,8 +22,16 @@
                 android:id="@+id/textView_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
                 android:text="TextView"
                 android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView_servingSize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="TextView" />
 
             <TextView
                 android:id="@+id/textView_calorie"
@@ -48,6 +56,13 @@
 
             <TextView
                 android:id="@+id/textView_protein"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/textView_fat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -81,19 +96,6 @@
                 android:layout_marginTop="20dp"
                 android:text="TextView" />
 
-            <TextView
-                android:id="@+id/textView_goodfood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="TextView" />
-
-            <TextView
-                android:id="@+id/textView_badfood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="TextView" />
         </LinearLayout>
     </LinearLayout>
 

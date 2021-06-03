@@ -22,30 +22,6 @@
             android:gravity="center">
         </TextView>
 
-        <!--<TextView
-            android:id="@+id/menu_num"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-
-            android:text="num"
-            android:textSize="25dp"
-            android:gravity="center">
-        </TextView>
-
-        <TextView
-            android:id="@+id/menu_unit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-
-            android:text="개"
-            android:textSize="25dp"
-            android:gravity="left">
-        </TextView>-->
-
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

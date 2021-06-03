@@ -25,7 +25,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SearchFoodInfoActivity extends AppCompatActivity {
-    private static final String TAG = "TestActivity";
+    private static final String TAG = "SearchFoodInfoActivity";
     private EditText editText_food;
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -43,6 +43,9 @@ public class SearchFoodInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_searchfoodinfo);
+
+//        //데이터 db 저장
+//        this.load();
 
         // 현재 view 가져오기
         mContext = getApplicationContext();
@@ -77,8 +80,9 @@ public class SearchFoodInfoActivity extends AppCompatActivity {
                 intent.putExtra("dietaryFiber", foodInfo.get(position).getDietaryFiber());
                 intent.putExtra("na", foodInfo.get(position).getNa());
                 intent.putExtra("k", foodInfo.get(position).getK());
-                intent.putExtra("goodfood", foodInfo.get(position).getGoodfood());
-                intent.putExtra("badfood", foodInfo.get(position).getBadfood());
+                intent.putExtra("servingSize", foodInfo.get(position).getServingSize());
+                intent.putExtra("servingUnit", foodInfo.get(position).getServingUnit());
+                intent.putExtra("fat", foodInfo.get(position).getFat());
                 startActivity(intent);
             }
         });
@@ -111,14 +115,14 @@ public class SearchFoodInfoActivity extends AppCompatActivity {
                             int dietaryFiber = food.getDietaryFiber();
                             int na = food.getNa();
                             int k = food.getK();
-                            String goodfood = food.getGoodfood();
-                            String badfood = food.getBadfood();
+                            int servingSize = food.getServingSize();
+                            String servingUnit = food.getServingUnit();
+                            int fat = food.getFat();
 
                             foodInfo.add(new FoodInfo(name, calorie, calUnit, carbohydrate,
                                     sugar, protein, cholesterol, dietaryFiber, na, k,
-                                    goodfood, badfood));
+                                    servingSize, servingUnit, fat));
                             list.add(name);
-                            // ! goodfood에 하나만 저장되면 출력이되고 있음: 고칠것
                         }
                         searchFoodInfoAdapter.notifyDataSetChanged();
                     }
@@ -129,5 +133,27 @@ public class SearchFoodInfoActivity extends AppCompatActivity {
                         Log.d(TAG, "onFailure");
                     }
                 });
+    }
+
+    public void load(){
+        String name = "닭갈비";
+        int servingSize = 500;
+        String servingUnit = "g";
+        int calorie = 369;
+        String calUnit = "kcal";
+        int protein = 34;
+        int fat = 9;
+        int carbohydrate = 40;
+        int sugar = 17;
+        int dietaryFiber = 10;
+        int k = 1243;
+        int na = 1264;
+        int cholesterol = 0;
+
+        FoodInfo foodInfo = new FoodInfo(name, calorie, calUnit, carbohydrate,
+                sugar, protein, cholesterol, dietaryFiber, na, k,
+                servingSize, servingUnit, fat);
+
+        foodRef.add(foodInfo);
     }
 }
